@@ -1,0 +1,99 @@
+{
+  "header": {
+    "nav": {
+      "about": "About",
+      "howItWorks": "How It Works",
+      "tokenomics": "Tokenomics",
+      "features": "Features"
+    }
+  },
+  "hero": {
+    "title": "Usernames Strategy",
+    "subtitle": "The Degen Engine on TON",
+    "description": "A unique project combining token trading with premium username acquisition and deflationary mechanics through buyback and burn.",
+    "cta": "Learn More",
+    "buyButton": "Buy $USERSTR",
+    "chartButton": "Chart",
+    "telegramButton": "Telegram"
+  },
+  "about": {
+    "title": "About the Project",
+    "description": "Usernames Strategy is an innovative project on the TON blockchain that combines token trading with the premium Telegram username market. Our token features a 10% commission on both buy and sell transactions, with 80% of this commission dedicated to purchasing valuable usernames on platforms like Fragment and GetGems.",
+    "tokenInfo": "The purchased usernames are listed with a 25% markup. When a username is sold, the entire proceeds are used to buy back tokens from the market, which are then burned, reducing the total supply and creating value for token holders.",
+    "stats": {
+      "commission": "Commission",
+      "toUsernames": "To Usernames",
+      "markup": "Markup"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "step1": {
+      "title": "10% Commission",
+      "description": "Every buy and sell transaction incurs a 10% commission"
+    },
+    "step2": {
+      "title": "80% to Username Purchase",
+      "description": "80% of the commission is used to buy premium usernames on Fragment and GetGems"
+    },
+    "step3": {
+      "title": "25% Markup Sale",
+      "description": "Purchased usernames are listed with a 25% markup"
+    },
+    "step4": {
+      "title": "Buyback & Burn",
+      "description": "When a username is sold, all proceeds are used to buy back and burn tokens, reducing supply"
+    }
+  },
+  "tokenomics": {
+    "title": "Tokenomics",
+    "commission": {
+      "title": "Transaction Commission",
+      "value": "10%",
+      "description": "Applied to both buy and sell transactions"
+    },
+    "distribution": {
+      "title": "Commission Distribution",
+      "usernamePurchase": "80% - Username Purchase",
+      "operations": "20% - Operations & Development"
+    },
+    "buyback": {
+      "title": "Buyback Mechanism",
+      "description": "100% of username sale proceeds are used for token buyback and burn, creating deflationary pressure"
+    },
+    "markup": {
+      "title": "Username Markup",
+      "value": "25%",
+      "description": "All purchased usernames are listed with a 25% markup"
+    }
+  },
+  "features": {
+    "title": "Key Features",
+    "feature1": {
+      "title": "Deflationary Model",
+      "description": "Continuous token burn reduces supply over time"
+    },
+    "feature2": {
+      "title": "Premium Assets",
+      "description": "Investment in valuable Telegram usernames"
+    },
+    "feature3": {
+      "title": "Transparent Mechanics",
+      "description": "Clear and verifiable tokenomics"
+    },
+    "feature4": {
+      "title": "TON Blockchain",
+      "description": "Built on the fast and efficient TON network"
+    }
+  },
+  "footer": {
+    "description": "Usernames Strategy - The Degen Engine on TON",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "copyright": "Build with love and tonns of coffee"
+  },
+  "common": {
+    "projectName": "Usernames Strategy"
+  }
+}
+
