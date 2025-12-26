@@ -1,18 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useMagneticButton } from '../../hooks/useMagneticButton';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const buyButtonMagnetic = useMagneticButton(0.6, 40);
+  const telegramButtonMagnetic = useMagneticButton(0.6, 40);
 
   return (
     <footer 
-      className="py-8 relative overflow-hidden"
+      className="w-full py-8 relative overflow-hidden bg-white"
       style={{
-        background: 'linear-gradient(to top, #0f172a 0%, #1e293b 100%)',
-        borderTop: '1px solid rgba(59, 130, 246, 0.2)',
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left side - Project name and subtitle */}
           <motion.div
@@ -23,18 +25,12 @@ export const Footer = () => {
             className="flex items-center gap-2"
           >
             <h3 
-              className="text-base font-bold"
-              style={{
-                background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className="text-base font-bold text-black"
             >
               {t('common.projectName')}
             </h3>
-            <span className="text-gray-400 text-xs">-</span>
-            <p className="text-gray-400 text-xs">
+            <span className="text-black text-xs">-</span>
+            <p className="text-black text-xs">
               {t('hero.subtitle')}
             </p>
           </motion.div>
@@ -50,6 +46,11 @@ export const Footer = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{ x: buyButtonMagnetic.x, y: buyButtonMagnetic.y }}
+              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+              onMouseMove={buyButtonMagnetic.onMouseMove}
+              onMouseEnter={buyButtonMagnetic.onMouseEnter}
+              onMouseLeave={buyButtonMagnetic.onMouseLeave}
               className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
                 borderColor: '#f97316',
@@ -93,6 +94,11 @@ export const Footer = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{ x: telegramButtonMagnetic.x, y: telegramButtonMagnetic.y }}
+              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+              onMouseMove={telegramButtonMagnetic.onMouseMove}
+              onMouseEnter={telegramButtonMagnetic.onMouseEnter}
+              onMouseLeave={telegramButtonMagnetic.onMouseLeave}
               className="px-5 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1)',
@@ -115,9 +121,9 @@ export const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="pt-4 mt-6 text-center text-gray-400 text-xs"
+          className="pt-4 mt-6 text-center text-black text-xs"
           style={{
-            borderTop: '1px solid rgba(59, 130, 246, 0.2)',
+            borderTop: '1px solid rgba(0, 0, 0, 0.1)',
           }}
         >
           <p className="flex items-center justify-center gap-1.5 flex-wrap">
@@ -162,14 +168,14 @@ export const Footer = () => {
           <div className="flex items-center justify-center gap-3">
             <a
               href="#privacy-policy"
-              className="text-gray-500 hover:text-primary transition-colors text-xs"
+              className="text-black hover:text-gray-600 transition-colors text-xs"
             >
               {t('footer.privacyPolicy')}
             </a>
-            <span className="text-gray-600 text-xs">|</span>
+            <span className="text-black text-xs">|</span>
             <a
               href="#terms-of-use"
-              className="text-gray-500 hover:text-primary transition-colors text-xs"
+              className="text-black hover:text-gray-600 transition-colors text-xs"
             >
               {t('footer.termsOfUse')}
             </a>

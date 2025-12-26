@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useMagneticButton } from '../../hooks/useMagneticButton';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -13,89 +14,37 @@ export const Hero = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  // Magnetic effects for buttons
+  const buyButtonMagnetic = useMagneticButton(0.6, 40);
+  const chartButtonMagnetic = useMagneticButton(0.6, 40);
+  const telegramButtonMagnetic = useMagneticButton(0.6, 40);
+
   return (
-    <div
+    <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Parallax background with futuristic elements */}
       <motion.div
         style={{ y }}
-        className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+        className="absolute inset-0 bg-white"
       >
-        {/* Animated glowing orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, 360],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl glow-blue"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 0],
-            opacity: [0.4, 0.7, 0.4],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl glow-purple"
-        />
-        
-        {/* Metallic ring structures */}
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-blue-500/30 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, transparent 40%, rgba(59, 130, 246, 0.1) 100%)',
-          }}
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-          }}
-          transition={{
-            duration: 40,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-purple-500/20 rounded-full"
-        />
       </motion.div>
 
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20"
+        className="relative z-10 pt-20 w-full"
       >
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="container">
+          <div className="text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 px-4"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 px-4 bg-black text-white inline-block px-8 py-4 rounded-lg"
             style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.5))',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             }}
           >
             {t('hero.title')}
@@ -105,13 +54,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 font-light px-4"
-            style={{
-              background: 'linear-gradient(135deg, #cbd5e1 0%, #60a5fa 50%, #a78bfa 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 font-light px-4 text-black"
           >
             {t('hero.subtitle')}
           </motion.h2>
@@ -120,7 +63,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed px-4"
+            className="text-base sm:text-lg md:text-xl text-black mb-12 max-w-prose mx-auto leading-relaxed"
           >
             {t('hero.description')}
           </motion.p>
@@ -134,6 +77,11 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{ x: buyButtonMagnetic.x, y: buyButtonMagnetic.y }}
+              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+              onMouseMove={buyButtonMagnetic.onMouseMove}
+              onMouseEnter={buyButtonMagnetic.onMouseEnter}
+              onMouseLeave={buyButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
                 borderColor: '#f97316',
@@ -177,6 +125,11 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{ x: chartButtonMagnetic.x, y: chartButtonMagnetic.y }}
+              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+              onMouseMove={chartButtonMagnetic.onMouseMove}
+              onMouseEnter={chartButtonMagnetic.onMouseEnter}
+              onMouseLeave={chartButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(59, 130, 246, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.1)',
@@ -194,6 +147,11 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{ x: telegramButtonMagnetic.x, y: telegramButtonMagnetic.y }}
+              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+              onMouseMove={telegramButtonMagnetic.onMouseMove}
+              onMouseEnter={telegramButtonMagnetic.onMouseEnter}
+              onMouseLeave={telegramButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1)',
@@ -208,10 +166,10 @@ export const Hero = () => {
               />
             </motion.button>
           </motion.div>
+          </div>
         </div>
-
       </motion.div>
-    </div>
+    </section>
   );
 };
 

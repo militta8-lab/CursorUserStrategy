@@ -5,7 +5,28 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",   // px-4
+        sm: "1.25rem",      // px-5
+        md: "1.5rem",       // px-6
+        lg: "2rem",         // px-8
+      },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1440px",    // важно: контейнер шире, чем стандарт 1536
+      },
+    },
     extend: {
+      fontFamily: {
+        sans: ['GT Walsheim Medium', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        'gt-walsheim': ['GT Walsheim Medium', 'sans-serif'],
+        'gt-walsheim-placeholder': ['GT Walsheim Medium Placeholder', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: '#3b82f6',

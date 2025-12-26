@@ -4,7 +4,8 @@
       "about": "About",
       "howItWorks": "How It Works",
       "tokenomics": "Tokenomics",
-      "features": "Features"
+      "features": "Features",
+      "nftShowcase": "NFT Collection"
     }
   },
   "hero": {
@@ -94,6 +95,23 @@
   },
   "common": {
     "projectName": "Usernames Strategy"
+  },
+  "nftShowcase": {
+    "title": "Our NFT Username Collection",
+    "subtitle": "Premium Telegram usernames available for purchase. Invest in digital assets with real value.",
+    "totalOnSale": "Currently {{count}} NFT usernames available for sale",
+    "walletLabel": "Our wallet:",
+    "instructions": "Use the navigation buttons below to browse through our NFT showcase and explore available usernames. Click on any NFT card to view it on Getgems, or use the button below to see the entire collection.",
+    "viewAll": "View All on Getgems",
+    "goToPage": "Go to NFT page on Getgems",
+    "empty": {
+      "title": "No Usernames Available",
+      "message": "Currently, there are no usernames on sale. Check back soon for new listings!"
+    },
+    "error": {
+      "title": "Unable to Load NFTs",
+      "message": "We're experiencing technical difficulties. Please try again later."
+    }
   }
 }
 

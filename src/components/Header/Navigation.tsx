@@ -47,6 +47,13 @@ export const Navigation = () => {
         {t('header.nav.features')}
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-200" />
       </button>
+      <button
+        onClick={() => scrollToSection('nft-showcase')}
+        className="text-gray-300 hover:text-blue-400 transition-all duration-200 relative group"
+      >
+        {t('header.nav.nftShowcase')}
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-200" />
+      </button>
     </nav>
   );
 };

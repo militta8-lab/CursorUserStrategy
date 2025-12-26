@@ -142,6 +142,12 @@ export const Header = () => {
               >
                 {t('header.nav.features')}
               </button>
+              <button
+                onClick={() => scrollToSection('nft-showcase')}
+                className="block w-full text-left text-gray-300 hover:text-white transition-colors"
+              >
+                {t('header.nav.nftShowcase')}
+              </button>
             </div>
           </motion.div>
         )}

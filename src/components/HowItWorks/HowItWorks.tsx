@@ -33,32 +33,26 @@ export const HowItWorks = () => {
     <section
       id="how-it-works"
       ref={ref}
-      className="py-20 md:py-32 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(to bottom, #1e293b 0%, #0f172a 50%, #1e293b 100%)',
-      }}
+      className="w-full py-20 md:py-32 relative overflow-hidden bg-white"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-6xl mx-auto"
         >
-          <h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 md:mb-16 text-center px-4"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.5))',
-            }}
-          >
-            {t('howItWorks.title')}
-          </h2>
+          <div className="flex justify-center mb-12 md:mb-16">
+            <h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-black text-white px-8 py-4 rounded-lg"
+              style={{
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              {t('howItWorks.title')}
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-12 gap-4 md:gap-6 lg:gap-8">
             {steps.map((step, index) => {
               const isOrange = index === 1 || index === 3; // Step 2 and 4 with orange accents
               return (
@@ -68,7 +62,7 @@ export const HowItWorks = () => {
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: step.delay }}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className={`glass-glow rounded-xl p-6 md:p-8 border transition-all duration-300 relative overflow-hidden group ${
+                className={`col-span-12 md:col-span-6 lg:col-span-3 glass-glow rounded-xl p-6 md:p-8 border transition-all duration-300 relative overflow-hidden group ${
                   isOrange 
                     ? 'border-orange-500/30 hover:border-orange-500/60' 
                     : 'border-blue-500/30 hover:border-blue-500/60'
@@ -106,7 +100,7 @@ export const HowItWorks = () => {
                   >
                     {t(`howItWorks.${step.key}.title`)}
                   </div>
-                  <div className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  <div className="text-black text-sm md:text-base leading-relaxed">
                     {t(`howItWorks.${step.key}.description`)}
                   </div>
                 </div>
