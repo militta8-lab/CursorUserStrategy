@@ -8,7 +8,6 @@ import { useTilt } from '../../hooks/useTilt';
  */
 interface NFTCardProps {
   nft: NFTDisplayItem;
-  delay?: number;
 }
 
 /**
@@ -17,10 +16,9 @@ interface NFTCardProps {
  * 
  * @param {NFTCardProps} props - Component props
  * @param {NFTDisplayItem} props.nft - NFT data to display
- * @param {number} props.delay - Animation delay for stagger effect
  * @returns {JSX.Element} Rendered NFT card component
  */
-export const NFTCard = ({ nft, delay = 0 }: NFTCardProps) => {
+export const NFTCard = ({ nft }: NFTCardProps) => {
   const { t } = useTranslation();
   // Tilt effect for 3D perspective - increased angle for more noticeable effect
   const tilt = useTilt(22);

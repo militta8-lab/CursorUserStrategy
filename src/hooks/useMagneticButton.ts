@@ -11,7 +11,6 @@ import { useState, useCallback, useRef } from 'react';
  */
 export const useMagneticButton = (strength: number = 0.5, maxDistance: number = 30) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
   const originalPositionRef = useRef<{ x: number; y: number } | null>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -51,7 +50,6 @@ export const useMagneticButton = (strength: number = 0.5, maxDistance: number = 
   }, [strength, maxDistance]);
 
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    setIsHovered(true);
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
     originalPositionRef.current = {
@@ -61,7 +59,6 @@ export const useMagneticButton = (strength: number = 0.5, maxDistance: number = 
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
     setPosition({ x: 0, y: 0 });
     originalPositionRef.current = null;
   }, []);

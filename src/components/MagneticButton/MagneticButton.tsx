@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect, ReactNode } from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { useRef, useState, useEffect, type ReactNode } from 'react';
+import { motion, type MotionProps } from 'framer-motion';
 
 interface MagneticButtonProps extends MotionProps {
   children: ReactNode;
@@ -42,15 +42,17 @@ export const MagneticButton = ({
     const button = buttonRef.current;
     if (!button) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e: Event) => {
       if (!isHovered) return;
+      
+      const mouseEvent = e as MouseEvent;
 
       const rect = button.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
-      const deltaX = (e.clientX - centerX) * strength;
-      const deltaY = (e.clientY - centerY) * strength;
+      const deltaX = (mouseEvent.clientX - centerX) * strength;
+      const deltaY = (mouseEvent.clientY - centerY) * strength;
 
       setPosition({ x: deltaX, y: deltaY });
     };
