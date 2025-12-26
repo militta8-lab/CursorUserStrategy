@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -12,6 +13,9 @@ export const Hero = () => {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  
+  // Hover support for buttons
+  const buttonHover = useHoverSupport({ scale: 1.05 });
 
   return (
     <section
@@ -69,7 +73,7 @@ export const Hero = () => {
             className="flex flex-wrap items-center justify-center gap-4 mb-8"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
@@ -112,7 +116,7 @@ export const Hero = () => {
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
@@ -129,7 +133,7 @@ export const Hero = () => {
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{

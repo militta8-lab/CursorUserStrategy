@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const buttonHover = useHoverSupport({ scale: 1.1 });
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -31,7 +33,7 @@ export const ScrollToTop = () => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
-          whileHover={{ scale: 1.1 }}
+          {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 md:hidden z-50 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-white transition-all duration-300"

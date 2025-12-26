@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const HowItWorks = () => {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
+  const cardHover = useHoverSupport({ scale: 1.05, y: -10 });
 
   const steps = [
     {
@@ -61,7 +63,7 @@ export const HowItWorks = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: step.delay }}
-                whileHover={{ scale: 1.05, y: -10 }}
+                {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
                 className={`col-span-12 md:col-span-6 lg:col-span-3 glass-glow rounded-xl p-6 md:p-8 border transition-all duration-300 relative overflow-hidden group ${
                   isOrange 
                     ? 'border-orange-500/30 hover:border-orange-500/60' 

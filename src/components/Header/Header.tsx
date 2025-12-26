@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Navigation } from './Navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const Header = () => {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const logoHover = useHoverSupport({ scale: 1.05 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +58,7 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            {...(logoHover.whileHover ? { whileHover: logoHover.whileHover } : {})}
             className="flex items-center gap-3"
           >
             <div 

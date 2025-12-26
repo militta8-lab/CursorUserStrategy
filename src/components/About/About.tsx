@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const About = () => {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
+  const cardHover = useHoverSupport({ scale: 1.05, y: -5 });
 
   return (
     <section
@@ -56,7 +58,7 @@ export const About = () => {
             className="mt-12 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8"
           >
             <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
+              {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
               className="col-span-12 md:col-span-6 lg:col-span-4 glass-glow rounded-xl p-6 border border-blue-500/30 hover:border-blue-500/60 transition-all duration-300 relative overflow-hidden group"
               style={{
                 boxShadow: '0 0 20px rgba(59, 130, 246, 0.2), inset 0 0 10px rgba(59, 130, 246, 0.05)',
@@ -69,7 +71,7 @@ export const About = () => {
               />
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
+              {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
               className="col-span-12 md:col-span-6 lg:col-span-4 glass-glow rounded-xl p-6 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 relative overflow-hidden group"
               style={{
                 boxShadow: '0 0 20px rgba(249, 115, 22, 0.2), inset 0 0 10px rgba(249, 115, 22, 0.05)',
@@ -90,7 +92,7 @@ export const About = () => {
               />
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
+              {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
               className="col-span-12 md:col-span-6 lg:col-span-4 glass-glow rounded-xl p-6 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 relative overflow-hidden group"
               style={{
                 boxShadow: '0 0 20px rgba(249, 115, 22, 0.2), inset 0 0 10px rgba(249, 115, 22, 0.05)',

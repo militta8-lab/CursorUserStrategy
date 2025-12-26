@@ -4,6 +4,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { useNFTs } from '../../hooks/useNFTs';
 import { NFTCard } from './NFTCard';
 import { useState, useCallback, useMemo } from 'react';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 // TON wallet address for fetching NFT usernames
 const WALLET_ADDRESS = 'UQDjtFLfMaSfNTl_fRUixboWWooMqclQdTmpgBkqULfPjq50';
@@ -19,6 +20,9 @@ const ITEMS_PER_PAGE = 8;
 export const NFTShowcase = () => {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
+  const arrowHover = useHoverSupport({ scale: 1.1 });
+  const dotHover = useHoverSupport({ scale: 1.2 });
+  const buttonHover = useHoverSupport({ scale: 1.05 });
   
   // Fetch NFTs dynamically from TON blockchain
   // Only shows NFTs that are actually on sale
@@ -273,7 +277,7 @@ export const NFTShowcase = () => {
                     {/* Previous Arrow */}
                     <motion.button
                       onClick={handlePrevPage}
-                      whileHover={{ scale: 1.1 }}
+                      {...(arrowHover.whileHover ? { whileHover: arrowHover.whileHover } : {})}
                       whileTap={{ scale: 0.9 }}
                       className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50"
                       aria-label="Previous page"
@@ -297,7 +301,7 @@ export const NFTShowcase = () => {
                         <motion.button
                           key={index}
                           onClick={() => handleGoToPage(index)}
-                          whileHover={{ scale: 1.2 }}
+                          {...(dotHover.whileHover ? { whileHover: dotHover.whileHover } : {})}
                           whileTap={{ scale: 0.8 }}
                           className={`transition-all duration-300 rounded-full ${
                             index === currentPage
@@ -320,7 +324,7 @@ export const NFTShowcase = () => {
                     {/* Next Arrow */}
                     <motion.button
                       onClick={handleNextPage}
-                      whileHover={{ scale: 1.1 }}
+                      {...(arrowHover.whileHover ? { whileHover: arrowHover.whileHover } : {})}
                       whileTap={{ scale: 0.9 }}
                       className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50"
                       aria-label="Next page"
@@ -355,7 +359,7 @@ export const NFTShowcase = () => {
                 href="https://getgems.io/usernamesstrategy"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-300 relative overflow-hidden group glass-glow"
                 style={{

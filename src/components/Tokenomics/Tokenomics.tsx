@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const Tokenomics = () => {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
+  const cardHover = useHoverSupport({ scale: 1.02 });
 
   return (
     <section
@@ -35,7 +37,7 @@ export const Tokenomics = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
               className="col-span-12 md:col-span-6 glass-glow rounded-xl p-8 border border-blue-500/30 hover:border-blue-500/60 transition-all relative overflow-hidden group"
               style={{
                 boxShadow: '0 0 25px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.05)',
@@ -65,7 +67,7 @@ export const Tokenomics = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              whileHover={{ scale: 1.02 }}
+              {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
               className="col-span-12 md:col-span-6 glass-glow rounded-xl p-8 border border-orange-500/30 hover:border-orange-500/60 transition-all relative overflow-hidden group"
               style={{
                 boxShadow: '0 0 25px rgba(249, 115, 22, 0.2), inset 0 0 15px rgba(249, 115, 22, 0.05)',

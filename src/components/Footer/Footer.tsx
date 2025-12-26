@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const buttonHover = useHoverSupport({ scale: 1.05 });
 
   return (
     <footer 
@@ -41,7 +43,7 @@ export const Footer = () => {
             className="flex items-center gap-3"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
               whileTap={{ scale: 0.95 }}
               className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
@@ -84,7 +86,7 @@ export const Footer = () => {
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              {...(buttonHover.whileHover ? { whileHover: buttonHover.whileHover } : {})}
               whileTap={{ scale: 0.95 }}
               className="px-5 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{

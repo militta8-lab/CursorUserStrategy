@@ -83,4 +83,54 @@
     border: 1px solid rgba(59, 130, 246, 0.3);
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
   }
+
+  /* Hover effects only on devices with hover support */
+  @media (hover: hover) and (pointer: fine) {
+    /* Hover effects for interactive elements */
+    .hover\:border-orange-500\/60:hover {
+      border-color: rgba(249, 115, 22, 0.6);
+    }
+    
+    .hover\:border-blue-500\/60:hover {
+      border-color: rgba(59, 130, 246, 0.6);
+    }
+    
+    .group:hover .group-hover\:scale-110 {
+      transform: scale(1.1);
+    }
+    
+    .group:hover .group-hover\:opacity-100 {
+      opacity: 1;
+    }
+    
+    .group:hover .group-hover\:w-full {
+      width: 100%;
+    }
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none), (pointer: coarse) {
+    /* Prevent sticky hover states on touch devices */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Ensure no hover styles persist after tap */
+    .hover\:border-orange-500\/60:active,
+    .hover\:border-blue-500\/60:active {
+      border-color: inherit;
+    }
+  }
+
+  /* Focus-visible styles for accessibility (keyboard navigation) */
+  *:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.8);
+    outline-offset: 2px;
+  }
 }

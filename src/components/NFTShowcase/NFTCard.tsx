@@ -2,6 +2,7 @@ import { motion, useMotionTemplate } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import type { NFTDisplayItem } from '../../types/nft';
 import { useTilt } from '../../hooks/useTilt';
+import { useHoverSupport } from '../../hooks/useHoverSupport';
 
 /**
  * Props for NFTCard component
@@ -22,6 +23,8 @@ export const NFTCard = ({ nft }: NFTCardProps) => {
   const { t } = useTranslation();
   // Tilt effect for 3D perspective - increased angle for more noticeable effect
   const tilt = useTilt(22);
+  // Hover support for card scale and movement
+  const cardHover = useHoverSupport({ scale: 1.05, y: -8 });
 
   /**
    * Handles click on NFT card to open marketplace in new tab
@@ -45,7 +48,7 @@ export const NFTCard = ({ nft }: NFTCardProps) => {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05, y: -8 }}
+      {...(cardHover.whileHover ? { whileHover: cardHover.whileHover } : {})}
       transition={{
         scale: { type: 'spring', stiffness: 200, damping: 25 },
         y: { type: 'spring', stiffness: 200, damping: 25 },
