@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { useMagneticButton } from '../../hooks/useMagneticButton';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -13,11 +12,6 @@ export const Hero = () => {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // Magnetic effects for buttons
-  const buyButtonMagnetic = useMagneticButton(0.6, 40);
-  const chartButtonMagnetic = useMagneticButton(0.6, 40);
-  const telegramButtonMagnetic = useMagneticButton(0.6, 40);
 
   return (
     <section
@@ -77,11 +71,6 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              animate={{ x: buyButtonMagnetic.x, y: buyButtonMagnetic.y }}
-              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-              onMouseMove={buyButtonMagnetic.onMouseMove}
-              onMouseEnter={buyButtonMagnetic.onMouseEnter}
-              onMouseLeave={buyButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
                 borderColor: '#f97316',
@@ -125,11 +114,6 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              animate={{ x: chartButtonMagnetic.x, y: chartButtonMagnetic.y }}
-              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-              onMouseMove={chartButtonMagnetic.onMouseMove}
-              onMouseEnter={chartButtonMagnetic.onMouseEnter}
-              onMouseLeave={chartButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(59, 130, 246, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.1)',
@@ -147,11 +131,6 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              animate={{ x: telegramButtonMagnetic.x, y: telegramButtonMagnetic.y }}
-              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-              onMouseMove={telegramButtonMagnetic.onMouseMove}
-              onMouseEnter={telegramButtonMagnetic.onMouseEnter}
-              onMouseLeave={telegramButtonMagnetic.onMouseLeave}
               className="px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1)',

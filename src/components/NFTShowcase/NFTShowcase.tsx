@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { useNFTs } from '../../hooks/useNFTs';
 import { NFTCard } from './NFTCard';
-import { useMagneticButton } from '../../hooks/useMagneticButton';
 import { useState, useCallback, useMemo } from 'react';
 
 // TON wallet address for fetching NFT usernames
@@ -20,9 +19,6 @@ const ITEMS_PER_PAGE = 8;
 export const NFTShowcase = () => {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
-  const viewAllButtonMagnetic = useMagneticButton(0.6, 40);
-  const prevArrowMagnetic = useMagneticButton(0.6, 40);
-  const nextArrowMagnetic = useMagneticButton(0.6, 40);
   
   // Fetch NFTs dynamically from TON blockchain
   // Only shows NFTs that are actually on sale
@@ -279,11 +275,6 @@ export const NFTShowcase = () => {
                       onClick={handlePrevPage}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      animate={{ x: prevArrowMagnetic.x, y: prevArrowMagnetic.y }}
-                      transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-                      onMouseMove={prevArrowMagnetic.onMouseMove}
-                      onMouseEnter={prevArrowMagnetic.onMouseEnter}
-                      onMouseLeave={prevArrowMagnetic.onMouseLeave}
                       className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50"
                       aria-label="Previous page"
                     >
@@ -331,11 +322,6 @@ export const NFTShowcase = () => {
                       onClick={handleNextPage}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      animate={{ x: nextArrowMagnetic.x, y: nextArrowMagnetic.y }}
-                      transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-                      onMouseMove={nextArrowMagnetic.onMouseMove}
-                      onMouseEnter={nextArrowMagnetic.onMouseEnter}
-                      onMouseLeave={nextArrowMagnetic.onMouseLeave}
                       className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50"
                       aria-label="Next page"
                     >
@@ -371,11 +357,6 @@ export const NFTShowcase = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                animate={{ x: viewAllButtonMagnetic.x, y: viewAllButtonMagnetic.y }}
-                transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-                onMouseMove={viewAllButtonMagnetic.onMouseMove}
-                onMouseEnter={viewAllButtonMagnetic.onMouseEnter}
-                onMouseLeave={viewAllButtonMagnetic.onMouseLeave}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-300 relative overflow-hidden group glass-glow"
                 style={{
                   boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1)',

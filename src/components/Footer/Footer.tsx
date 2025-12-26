@@ -1,11 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { useMagneticButton } from '../../hooks/useMagneticButton';
 
 export const Footer = () => {
   const { t } = useTranslation();
-  const buyButtonMagnetic = useMagneticButton(0.6, 40);
-  const telegramButtonMagnetic = useMagneticButton(0.6, 40);
 
   return (
     <footer 
@@ -46,11 +43,6 @@ export const Footer = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              animate={{ x: buyButtonMagnetic.x, y: buyButtonMagnetic.y }}
-              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-              onMouseMove={buyButtonMagnetic.onMouseMove}
-              onMouseEnter={buyButtonMagnetic.onMouseEnter}
-              onMouseLeave={buyButtonMagnetic.onMouseLeave}
               className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group border-2"
               style={{
                 borderColor: '#f97316',
@@ -94,11 +86,6 @@ export const Footer = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              animate={{ x: telegramButtonMagnetic.x, y: telegramButtonMagnetic.y }}
-              transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-              onMouseMove={telegramButtonMagnetic.onMouseMove}
-              onMouseEnter={telegramButtonMagnetic.onMouseEnter}
-              onMouseLeave={telegramButtonMagnetic.onMouseLeave}
               className="px-5 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-300 flex items-center gap-2 relative overflow-hidden group glass-glow"
               style={{
                 boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1)',
